@@ -1,0 +1,27 @@
+
+body {
+	background-image: url(color.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: right top;
+    background-attachment: scroll;
+    background-color: "biiinda"
+
+
+}
+.row {
+	border: 15px solid green;
+	border-color:#1111;
+	margin: 20px;
+	width: 500;
+}
+
+.container {
+	float: center;
+}
+
+.welcome {
+	float: center;
+	color: red;
+	background-color: red;
+}

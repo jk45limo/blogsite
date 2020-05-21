@@ -1,0 +1,41 @@
+{%extends 'posts/base.html'%}
+
+{%block title%}
+homepage
+{%endblock%}
+
+{%block content%}
+<div class="container">
+{% if user.is_authenticated %}
+	<div class="welcome">
+	<h1>Welcome {{ user.username }}</h1>
+{% else %}
+	<h1>Welcome to view Various Blogs</h1>
+{% endif %}
+	</div>
+</div>
+
+	<div class="container">
+	<div class="row">
+	{% for blogs in blogs %}
+		{%if blogs.draft%}
+		{% else %}
+	    <div class="card" style="margin: 8px;" >
+			
+	    	{% if blogs.image %}
+		  	<img src="{{blogs.image.url}}" width="350" height="200"> 
+		  	{% endif %}
+			<div class="card-body">
+		    	<h5 class="card-title">{{ blogs.blogtopic }}</h5>
+		    	<p class="card-text">{{blogs.blogsummary}}</p>
+		    	<p class="card-text">{{blogs.date_published}}</p>
+		    	<a href="#" class="btn btn-primary">View blog</a>
+		 	</div>
+
+		</div></br>
+		{% endif %}
+
+	{% endfor %}
+	</div>
+	</div>
+{%endblock%}
