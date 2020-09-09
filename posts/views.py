@@ -1,4 +1,4 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect , get_object_or_404
 from django.http import HttpResponse 
 from django.contrib.auth.models import User, auth
 from .models import Blog
@@ -14,14 +14,13 @@ def login(request):
 	if request.method == 'POST':
 		username= request.POST ['username']
 		password= request. POST ['password']
-		
 		user= auth.authenticate(username=username, password=password)
 
 		if user is not None:
 			auth.login(request, user)
 			return redirect("/")
 		else:
-			messages.info(request,'invalid password or username')
+			messages.error(request,'invalid password or username')
 			return redirect("login") 
 	return render(request, "posts/login.html",{})
 
@@ -72,21 +71,15 @@ def register(request):
 	else:
 		return render(request, 'posts/register.html',{})
 
+
+def blogpage(request ):
+	blog= get_object_or_404(Blog, id=1)
+	return render(request, "posts/blog.html",{'blogs':blog})
+
+def drafts(request, id=None):
+	blog=get_object_or_404(Blog, id=1)
+	return render(request, "posts/drafts.html",{'blogs':blog})
+	
 def logout(request):
 	auth.logout(request)
 	return redirect('/')
-
-def minimum_size(width=None, height=None):
-
-    def validator(image):
-        if not image.is_image():
-            raise ValidationError('File should be image.')
-
-        (errors, image_info) = ([], image.info()['image_info'])
-        if width is not None and image_info['width'] < width:
-            errors.append('Width should be > {} px.'.format(width))
-        if height is not None and image_info['height'] < height:
-            errors.append('Height should be > {} px.'.format(height))
-        raise ValidationError(errors)
-
-    return validator

@@ -1,0 +1,25 @@
+{%extends 'posts/base.html'%}
+
+{%block title%}
+Blog
+{%endblock%}
+
+{%block content%}
+
+<div class="container">
+<h1>Drafts.</h1>
+{%if blogs.draft%}
+<p>
+    {%if blogs.image %}
+        <img src="{{blogs.image.url}}" width="350" height="200"></br>
+    {% endif %}
+    
+    {{ blogs.blogtopic }}</br>
+    {{ blogs.date_published }}</br>
+    {{ blogs.blogcontent}}</br>
+    <a href="/addblog/" class="btn btn-success">Edit drafts</a>
+
+</p>
+{% endif %}
+</div>
+{%endblock%}

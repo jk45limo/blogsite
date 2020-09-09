@@ -1,0 +1,5 @@
+{
+    "gitlens.statusBar.dateFormat": "",
+    "editor.suggest.statusBar.visible": true,
+    "problems.showCurrentInStatus": true
+}

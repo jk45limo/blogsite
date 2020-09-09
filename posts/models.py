@@ -9,6 +9,6 @@ class Blog(models.Model):
    image= models.ImageField(upload_to = 'pics')
    date_published=  models.DateTimeField(auto_now=True)
 
-def __str__(self):
-	return self.blogtopic
+   def __str__(self):
+	   return self.blogtopic
 

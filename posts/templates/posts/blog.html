@@ -1,0 +1,20 @@
+{%extends 'posts/base.html'%}
+
+{%block title%}
+Blog
+{%endblock%}
+
+{%block content%}
+<div class="container">
+<p>
+    {%if blogs.image %}
+        <img src="{{blogs.image.url}}" width="350" height="200"></br>
+    {% endif %}
+    
+    {{ blogs.blogtopic }}</br>
+    {{ blogs.date_published }}</br>
+    {{ blogs.blogcontent}}
+
+</p>
+</div>
+{%endblock%}
